@@ -12,19 +12,22 @@ const getArgs = () => {
     a: 'action',
   }
 });
-console.log(args)
+
 if(!args.action) {
-  process.stderr.write('Action option is required! Please, write --action or -a and define action as encode or decode.');
-  process.exit();
+  process.stderr.write('Action option is required! Please, write --action or -a and define action as encode or decode. ');
+  process.exit(1);
 }
 if(args.action !== 'encode' && args.action !== 'decode') {
-  process.stderr.write('Action option must be <encode> or <decode>.');
-  process.exit();
+  process.stderr.write('Action option may be only <encode> or <decode>.');
+  process.exit(1);
 }
 if(typeof args.shift !== 'number') {
-  console.log(!args.shift, typeof args.shift)
-  process.stderr.write('Shift option is required! Please, pass option correctly: write --shift or -s and non negative integer number.');
-  process.exit();
+  process.stderr.write('Shift option is required! Please, pass option correctly: write --shift or -s and integer number.');
+  process.exit(1);
+}
+if(!Number.isInteger(args.shift)) {
+  process.stderr.write('Shift option is wrong! Please, pass option correctly: write --shift or -s and integer number.');
+  process.exit(1);
 }
 
 return args;

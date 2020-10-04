@@ -10,13 +10,12 @@ const toCipher = (args) => { return through2((data, enc, cb) => {
   for (let i = 0; i < inputData.length; i += 1) {
     if (charEnDown.includes(inputData[i])) {
       const currInd = charEnDown.indexOf(inputData[i]);
-      const newInd = action === 'encode' ? (currInd + shift) % lettersNumber : (lettersNumber + currInd - shift) % lettersNumber;
+      const newInd = ((action === 'encode' && shift > 0) || (action === 'decode' && shift < 0)) ? (currInd + Math.abs(shift)) % lettersNumber : (lettersNumber + currInd - Math.abs(shift)) % lettersNumber;
       changedData.push(charEnDown[newInd]);
-      // console.log((currInd - shift) % lettersNumber)
     }
     else if (charEnDown.includes(inputData[i].toLowerCase())) {
       const currInd = charEnDown.indexOf(inputData[i].toLowerCase());
-      const newInd = action === 'encode' ? (currInd + shift) % lettersNumber : (lettersNumber + currInd - shift) % lettersNumber;
+      const newInd = ((action === 'encode' && shift > 0) || (action === 'decode' && shift < 0)) ? (currInd + Math.abs(shift)) % lettersNumber : (lettersNumber + currInd - Math.abs(shift)) % lettersNumber;
       changedData.push(charEnDown[newInd].toUpperCase());
     }
     else changedData.push(inputData[i]);

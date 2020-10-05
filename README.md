@@ -3,20 +3,20 @@
 
 <p>Hi, everyone! Here you are a Caesar cipher CLI application. It encode and decode latin letters with passed shift.<p>
 
-How to use:<br>
+How to use:
 
-<p>go to your code editor programm and make:<br>
-  `git clone https://github.com/lactivka/caesar-cipher-cli.git`.<br>
+go to your code editor programm and make:<br>
+  `$ git clone https://github.com/lactivka/caesar-cipher-cli.git`
 
 change current directory to caesar-cipher-cli:<br>
-  `cd caesar-cipher-cli`
+  `$ cd caesar-cipher-cli`
   
 then you need to install all dependencies in the local node_modules folder<br>
-  `npm install`
+  `$ npm install`
   or you can use an aliase <code>npm i<code>
   
 now you can enjoy the programm, run it and pass options
-  `node task1/index.js <options>`
+  `$ node task1/index.js <options>`
   Options:
    1. -a, --action: an action encode/decode (required)
    2. -s, --shift: a shift (required)

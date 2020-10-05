@@ -13,7 +13,7 @@ change current directory to caesar-cipher-cli:<br>
   
 then you need to install all dependencies in the local node_modules folder<br>
   `$ npm install`
-  or you can use an aliase <code>npm i<code>
+  or you can use an aliase `npm i`
   
 now you can enjoy the programm, run it and pass options
   `$ node task1/index.js <options>`

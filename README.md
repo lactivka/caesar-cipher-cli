@@ -44,5 +44,5 @@ now you can enjoy the programm, run it and pass options
  
  >$ node task1/index.js --action encode --shift 56 --input decoded.txt
  
- >Run application, pass options and enjoy the result!
+ Run application, pass options and enjoy the result!
   

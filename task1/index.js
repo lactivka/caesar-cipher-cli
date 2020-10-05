@@ -1,12 +1,14 @@
-const { getArgs } = require('./parser');
-const { pipeline } = require('stream');
 const fs = require('fs');
+const path = require('path');
+const { pipeline } = require('stream');
 const { stdin, stdout } = require('process');
+const { getArgs } = require('./parser');
 const toCipher = require('./cipher');
 
 const args = getArgs();
+
 const inputStream = args.input ? fs.createReadStream(args.input) : stdin;
-const outputStream = args.output ? fs.createWriteStream(args.output, {flags: 'a+', flags: 'r+' }) : stdout;
+const outputStream = args.output ? fs.createWriteStream(args.output, {flags: 'a+' }) : stdout;
 
 pipeline(
   inputStream,

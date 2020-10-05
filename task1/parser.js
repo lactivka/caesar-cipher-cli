@@ -1,4 +1,6 @@
 const minimist = require('minimist');
+const path = require('path');
+const fs = require('fs');
 
 const getArgs = () => {
   const args = minimist(process.argv.slice(2), {
@@ -27,7 +29,23 @@ if(typeof args.shift !== 'number') {
 }
 if(!Number.isInteger(args.shift)) {
   process.stderr.write('Shift option is wrong! Please, pass option correctly: write --shift or -s and integer number.');
-  process.exit(1);
+
+}
+if(args.input) {
+  fs.access(path.resolve(args.input), fs.F_OK | fs.R_OK, (err) => {
+    if(err){
+      process.stderr.write(`${args.input} ${err.code === 'ENOENT' ? 'does not exist' : 'is not readable'}`);
+      process.exit(1);
+    }
+  });
+}
+if(args.output) {
+  fs.access(path.resolve(args.output), fs.F_OK | fs.W_OK, (err) => {
+    if(err){
+      process.stderr.write(`${args.output} ${err.code === 'ENOENT' ? 'does not exist' : 'is read-only'}`);
+      process.exit(1);
+    }
+  });
 }
 
 return args;
